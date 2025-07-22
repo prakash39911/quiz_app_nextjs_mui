@@ -8,7 +8,7 @@ const Quiz = () => {
   const slug = params.slug as string[];
 
   const difficulty = slug[0];
-  let questionNumber = slug[1];
+  const questionNumber = slug[1];
 
   return (
     <div className="container mx-auto min-h-screen flex justify-center items-center">

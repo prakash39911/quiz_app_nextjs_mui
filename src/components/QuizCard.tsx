@@ -57,15 +57,8 @@ export default function QuizCard({
 
     return () => {
       clearInterval(timerId);
-
-      // updateSavedAnswerArray({
-      //   id: currentQuestionData.id,
-      //   givenAnswer: selectedValueRef.current,
-      //   correctAnswer: currentQuestionData.correctOption,
-      //   timeTaken: timeTakenRef.current,
-      // });
     };
-  }, [questionNumber, currentQuestionsArray, updateSavedAnswerArray]);
+  }, [questionNumber, currentQuestionData, savedAnswerArray]);
 
   if (!currentQuestionData) {
     return null;

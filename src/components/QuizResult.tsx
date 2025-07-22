@@ -92,7 +92,7 @@ const QuizResult = ({
             Quiz Results
           </Typography>
           <Typography variant="h6" color="text.secondary">
-            Here's how you performed!
+            Here&apos;s how you performed!
           </Typography>
         </Box>
 
