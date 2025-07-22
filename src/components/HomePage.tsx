@@ -20,7 +20,7 @@ export default function HomePage() {
           <div className="text-6xl font-bold text-white text-center">
             Welcome To The World of Best Quiz Collection
           </div>
-          <div onClick={() => router.push("/quiz")}>
+          <div onClick={() => router.push("/selectdifficulty")}>
             <Button
               variant="outlined"
               color="inherit"

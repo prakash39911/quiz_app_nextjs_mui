@@ -1,21 +1,4 @@
-export const SelectDifficulty = [
-  {
-    label: "Any",
-    value: "any",
-  },
-  {
-    label: "Easy",
-    value: "easy",
-  },
-  {
-    label: "Medium",
-    value: "medium",
-  },
-  {
-    label: "Hard",
-    value: "hard",
-  },
-];
+export const SelectDifficulty = ["Any", "Easy", "Medium", "Hard"];
 
 export const questions = [
   {
