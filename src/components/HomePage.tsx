@@ -15,7 +15,7 @@ export default function HomePage() {
         fill
         className="object-cover blur-2xl"
       />
-      <div className="absolute inset-0 flex justify-center items-center px-auto">
+      <div className="absolute inset-0 flex justify-center items-center px-auto p-2">
         <div className="flex flex-col gap-8 items-center">
           <div className="text-6xl font-bold text-white text-center">
             Welcome To Awesome Maths Quiz Collection

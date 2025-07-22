@@ -80,7 +80,7 @@ export default function QuizCard({
           <div className="text-3xl font-bold mb-2">
             <span className="text-4xl text-blue-400">M</span>ath Quiz
           </div>
-          <div className="absolute right-24 top-1">
+          <div className="absolute right-[80px] md:right-24 top-1 md:top-1">
             <QuestionTimer timeTaken={timeTaken} />
           </div>
           <div className="absolute right-0 top-1">

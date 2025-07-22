@@ -34,7 +34,7 @@ export default function DifficultySelector({
   };
 
   return (
-    <div className="flex flex-col gap-8 m-6 h-[200px]">
+    <div className="flex flex-col gap-8 m-6 h-[225px] md:h-[200px]">
       <div className="text-3xl font-bold text-transparent bg-clip-text bg-blue-400">
         Select Difficulty Level
       </div>
