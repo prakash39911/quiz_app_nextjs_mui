@@ -112,9 +112,15 @@ export default function QuizCard({
             {questionNumber > 1 && (
               <Button
                 variant="outlined"
-                onClick={() =>
-                  router.replace(`/quiz/${difficulty}/${questionNumber - 1}`)
-                }
+                onClick={() => {
+                  updateSavedAnswerArray({
+                    id: currentQuestionData.id,
+                    givenAnswer: selectedValue,
+                    correctAnswer: currentQuestionData.correctOption,
+                    timeTaken: timeTaken,
+                  });
+                  router.replace(`/quiz/${difficulty}/${questionNumber - 1}`);
+                }}
               >
                 Previous
               </Button>
