@@ -16,8 +16,8 @@ export default function QuizResultPage() {
       currentQuestionsArray={currentQuestionArray}
       savedAnswerArray={savedAnswerArray}
       onReset={() => {
-        reset();
         router.push(`/selectdifficulty`);
+        reset();
       }}
     />
   );

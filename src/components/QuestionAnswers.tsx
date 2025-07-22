@@ -9,7 +9,7 @@ import { storeQuestionType } from "@/types";
 import "katex/dist/katex.min.css";
 import renderMathInElement from "katex/dist/contrib/auto-render";
 
-const KatexRender = ({ text }: { text: string }) => {
+export const KatexRender = ({ text }: { text: string }) => {
   const containerRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {

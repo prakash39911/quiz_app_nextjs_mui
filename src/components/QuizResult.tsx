@@ -21,6 +21,7 @@ import {
 } from "@mui/icons-material";
 import { getDifficultyColor } from "@/lib/UtilityFunctions";
 import { SavedAnswer, storeQuestionType } from "@/types";
+import { KatexRender } from "./QuestionAnswers";
 
 interface QuizResultsProps {
   currentQuestionsArray: storeQuestionType[];
@@ -289,7 +290,7 @@ const QuizResult = ({
                       fontWeight="medium"
                       sx={{ mb: 3 }}
                     >
-                      {question.question}
+                      <KatexRender text={question.question} />
                     </Typography>
 
                     {/* Answer Comparison */}
