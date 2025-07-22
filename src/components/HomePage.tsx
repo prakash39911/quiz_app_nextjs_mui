@@ -18,7 +18,7 @@ export default function HomePage() {
       <div className="absolute inset-0 flex justify-center items-center px-auto">
         <div className="flex flex-col gap-8 items-center">
           <div className="text-6xl font-bold text-white text-center">
-            Welcome To The World of Best Quiz Collection
+            Welcome To Awesome Maths Quiz Collection
           </div>
           <div onClick={() => router.push("/selectdifficulty")}>
             <Button

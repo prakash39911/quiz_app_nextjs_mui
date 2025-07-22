@@ -58,12 +58,12 @@ export default function QuizCard({
     return () => {
       clearInterval(timerId);
 
-      updateSavedAnswerArray({
-        id: currentQuestionData.id,
-        givenAnswer: selectedValueRef.current,
-        correctAnswer: currentQuestionData.correctOption,
-        timeTaken: timeTakenRef.current,
-      });
+      // updateSavedAnswerArray({
+      //   id: currentQuestionData.id,
+      //   givenAnswer: selectedValueRef.current,
+      //   correctAnswer: currentQuestionData.correctOption,
+      //   timeTaken: timeTakenRef.current,
+      // });
     };
   }, [questionNumber, currentQuestionsArray, updateSavedAnswerArray]);
 
@@ -72,6 +72,8 @@ export default function QuizCard({
   }
 
   const GetSelectedValue = (selectedOption: string) => {
+    console.log("selected value---", selectedOption);
+
     setSelectedValue(selectedOption);
   };
 
@@ -127,9 +129,15 @@ export default function QuizCard({
             {questionNumber < currentQuestionsArray.length && (
               <Button
                 variant="outlined"
-                onClick={() =>
-                  router.replace(`/quiz/${difficulty}/${questionNumber + 1}`)
-                }
+                onClick={() => {
+                  updateSavedAnswerArray({
+                    id: currentQuestionData.id,
+                    givenAnswer: selectedValue,
+                    correctAnswer: currentQuestionData.correctOption,
+                    timeTaken: timeTaken,
+                  });
+                  router.replace(`/quiz/${difficulty}/${questionNumber + 1}`);
+                }}
               >
                 Next
               </Button>
@@ -137,7 +145,15 @@ export default function QuizCard({
             {questionNumber === currentQuestionsArray.length && (
               <Button
                 variant="outlined"
-                onClick={() => router.replace(`/quizresult`)}
+                onClick={() => {
+                  updateSavedAnswerArray({
+                    id: currentQuestionData.id,
+                    givenAnswer: selectedValue,
+                    correctAnswer: currentQuestionData.correctOption,
+                    timeTaken: timeTaken,
+                  });
+                  router.replace(`/quizresult`);
+                }}
               >
                 Submit
               </Button>

@@ -1,11 +1,34 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import { storeQuestionType } from "@/types";
+import "katex/dist/katex.min.css";
+import renderMathInElement from "katex/dist/contrib/auto-render";
+
+const KatexRender = ({ text }: { text: string }) => {
+  const containerRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.textContent = text;
+      renderMathInElement(containerRef.current, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "\\[", right: "\\]", display: true },
+        ],
+        throwOnError: false,
+      });
+    }
+  }, [text]);
+
+  return <span ref={containerRef} />;
+};
 
 export default function QuestionAnswers({
   currentQuestionData,
@@ -16,25 +39,26 @@ export default function QuestionAnswers({
   GetSelectedValue: (option: string) => void;
   isSelectedValueAlreadyExist: string | null;
 }) {
-  const isSelected = isSelectedValueAlreadyExist
-    ? isSelectedValueAlreadyExist
-    : "";
+  const [value, setValue] = useState(isSelectedValueAlreadyExist || "");
 
-  const [value, setValue] = useState(isSelected);
+  useEffect(() => {
+    setValue(isSelectedValueAlreadyExist || "");
+  }, [isSelectedValueAlreadyExist]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    GetSelectedValue((event.target as HTMLInputElement).value);
-    setValue((event.target as HTMLInputElement).value);
+    const selectedOption = (event.target as HTMLInputElement).value;
+    GetSelectedValue(selectedOption);
+    setValue(selectedOption);
   };
 
   if (!currentQuestionData) {
-    return;
+    return <div>Loading Question...</div>;
   }
 
   return (
     <FormControl className="w-full">
       <div className="mb-4 text-center text-2xl font-semibold min-h-[6rem] flex items-center justify-center">
-        <span>Question: {currentQuestionData.question}</span>
+        <KatexRender text={currentQuestionData.question} />
       </div>
       <RadioGroup
         aria-labelledby="demo-controlled-radio-buttons-group"
@@ -45,33 +69,33 @@ export default function QuestionAnswers({
       >
         <div className="border border-gray-300 rounded-md px-3 py-1 my-2 w-full hover:bg-gray-50">
           <FormControlLabel
-            value={1}
+            value="1"
             control={<Radio />}
-            label={currentQuestionData.option1}
+            label={<KatexRender text={currentQuestionData.option1} />}
             className="w-full"
           />
         </div>
         <div className="border border-gray-300 rounded-md px-3 py-1 my-2 w-full hover:bg-gray-50">
           <FormControlLabel
-            value={2}
+            value="2"
             control={<Radio />}
-            label={currentQuestionData.option2}
+            label={<KatexRender text={currentQuestionData.option2} />}
             className="w-full"
           />
         </div>
         <div className="border border-gray-300 rounded-md px-3 py-1 my-2 w-full hover:bg-gray-50">
           <FormControlLabel
-            value={3}
+            value="3"
             control={<Radio />}
-            label={currentQuestionData.option3}
+            label={<KatexRender text={currentQuestionData.option3} />}
             className="w-full"
           />
         </div>
-        <div className="border border-gray-300 rounded-md px-3 py-1 my-4 w-full hover:bg-gray-50">
+        <div className="border border-gray-300 rounded-md px-3 py-1 my-2 w-full hover:bg-gray-50">
           <FormControlLabel
-            value={4}
+            value="4"
             control={<Radio />}
-            label={currentQuestionData.option4}
+            label={<KatexRender text={currentQuestionData.option4} />}
             className="w-full"
           />
         </div>

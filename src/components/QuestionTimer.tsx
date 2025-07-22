@@ -7,7 +7,7 @@ interface QuestionTimerProps {
   timeTaken: number;
 }
 
-const QuestionTimer: React.FC<QuestionTimerProps> = ({ timeTaken }) => {
+const QuestionTimer = ({ timeTaken }: QuestionTimerProps) => {
   return (
     <div className="mx-auto w-52">
       <div className="flex items-center justify-between mb-2">

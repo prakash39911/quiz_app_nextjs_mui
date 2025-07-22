@@ -176,7 +176,7 @@ const QuizResult = ({
 
             <Box display="flex" justifyContent="center">
               <Button
-                variant="contained"
+                variant="outlined"
                 size="large"
                 onClick={onReset}
                 startIcon={<Refresh />}
